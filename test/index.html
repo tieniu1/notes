@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        display: flex;
+        flex-direction: column;
+      }
+      .box1 {
+        width: 400px;
+        height: 400px;
+        background-color: red;
+        margin-bottom: 10px;
+        /* overflow: hidden; */
+      }
+      .box2 {
+        width: 400px;
+        height: 400px;
+        background-color: green;
+        margin-top: 20px;
+        /* overflow: hidden; */
+      }
+      .parent {
+        width: 200px;
+        height: 200px;
+        background-color: #f0f0f0;
+        /* 父元素没有设置 margin-top */
+      }
+
+      .child {
+        width: 100px;
+        height: 100px;
+        background-color: #ff5555;
+        margin-top: 50px; /* 子元素设置上边距 */
+        /* 此时父元素会一起往下移动 50px */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div style="overflow: hidden">
+      <div class="box1"></div>
+    </div>
+    <div style="overflow: hidden">
+      <div class="box2"></div>
+    </div> -->
+    <div class="wrap">
+      <div class="box1"></div>
+      <div class="box2"></div>
+    </div>
+    <div class="parent">
+      <div class="child">子元素</div>
+    </div>
+  </body>
+</html>
