@@ -9,53 +9,77 @@
         margin: 0;
         padding: 0;
       }
-      .wrap {
-        display: flex;
-        flex-direction: column;
-      }
-      .box1 {
-        width: 400px;
-        height: 400px;
-        background-color: red;
-        margin-bottom: 10px;
-        /* overflow: hidden; */
-      }
-      .box2 {
-        width: 400px;
-        height: 400px;
-        background-color: green;
-        margin-top: 20px;
-        /* overflow: hidden; */
-      }
       .parent {
-        width: 200px;
-        height: 200px;
-        background-color: #f0f0f0;
-        /* 父元素没有设置 margin-top */
+        line-height: 150%;
+        opacity: 0;
+        position: relative;
       }
-
       .child {
-        width: 100px;
-        height: 100px;
-        background-color: #ff5555;
-        margin-top: 50px; /* 子元素设置上边距 */
-        /* 此时父元素会一起往下移动 50px */
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .text-20 {
+        font-size: 20px;
+      }
+      .img-parent {
+        font-size: 0;
+      }
+      .img-parent span {
+        font-size: 16px;
+        display: inline-block;
+        /* vertical-align: middle; */
+      }
+      .img-parent img {
+        display: inline-block;
+        /* vertical-align: middle; */
+      }
+      .small-text {
+        font-size: 12px; /*最小支持12px*/
+        transform: scale(0.8); /*缩放比例 = 目标大小/12 */
+        transform-origin: left top; /*设置缩放原点*/
       }
     </style>
   </head>
   <body>
-    <!-- <div style="overflow: hidden">
-      <div class="box1"></div>
+    <span style="font-size: 0px">
+      <span style="font-size: 20px">正常文本</span>
+      <span class="small-text">缩小文本</span>
+      <span style="font-size: 20px">正常文本</span>
+    </span>
+    <!-- <div class="parent">
+      <div class="child">
+        <span>文本文本</span>
+      </div>
+      <div>
+        <span class="text-20">文本文本</span>
+      </div>
     </div>
-    <div style="overflow: hidden">
-      <div class="box2"></div>
+    <div class="img-parent">
+      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
+      <span> ；的封口机阿什利分解氨是开立方；d</span>
+
+      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
+      <span> asdfhgasljzxcvnqweuropqweutrs;jfxcvnm,zxcvneqoqweputri </span>
+
+      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
+      <span> asdfhgasljzxcvnqweuropqweutrs;jfxcvnm,zxcvneqoqweputri </span>
+      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
+      <span> Hgjzx,zxcvneqoqweputri </span>
+    </div>
+    <div>
+      <span>
+        <span
+          style="
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+          "
+          >HHFKDSa</span
+        >
+        <span style="font-size: 43px">Hsdfjskflasjf</span>
+        <span style="font-size: 23px">Hsdfjskflasjf</span>
+      </span>
     </div> -->
-    <div class="wrap">
-      <div class="box1"></div>
-      <div class="box2"></div>
-    </div>
-    <div class="parent">
-      <div class="child">子元素</div>
-    </div>
   </body>
 </html>
