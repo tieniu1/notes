@@ -9,77 +9,32 @@
         margin: 0;
         padding: 0;
       }
-      .parent {
-        line-height: 150%;
-        opacity: 0;
-        position: relative;
+      .wrap {
+        display: flex;
+        width: 400px;
+        flex-wrap: wrap;
+        justify-content: space-between;
       }
-      .child {
-        opacity: 1;
-        position: absolute;
-        top: 0;
-        left: 0;
+      .item {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
       }
-      .text-20 {
-        font-size: 20px;
-      }
-      .img-parent {
-        font-size: 0;
-      }
-      .img-parent span {
-        font-size: 16px;
-        display: inline-block;
-        /* vertical-align: middle; */
-      }
-      .img-parent img {
-        display: inline-block;
-        /* vertical-align: middle; */
-      }
-      .small-text {
-        font-size: 12px; /*最小支持12px*/
-        transform: scale(0.8); /*缩放比例 = 目标大小/12 */
-        transform-origin: left top; /*设置缩放原点*/
+      .item.placeholder {
+        background-color: transparent;
       }
     </style>
   </head>
   <body>
-    <span style="font-size: 0px">
-      <span style="font-size: 20px">正常文本</span>
-      <span class="small-text">缩小文本</span>
-      <span style="font-size: 20px">正常文本</span>
-    </span>
-    <!-- <div class="parent">
-      <div class="child">
-        <span>文本文本</span>
-      </div>
-      <div>
-        <span class="text-20">文本文本</span>
-      </div>
+    <div class="wrap">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+      <div class="item">4</div>
+      <div class="item">5</div>
+      <div class="item">6</div>
+      <div class="item">7</div>
+      <div class="item placeholder"></div>
     </div>
-    <div class="img-parent">
-      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
-      <span> ；的封口机阿什利分解氨是开立方；d</span>
-
-      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
-      <span> asdfhgasljzxcvnqweuropqweutrs;jfxcvnm,zxcvneqoqweputri </span>
-
-      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
-      <span> asdfhgasljzxcvnqweuropqweutrs;jfxcvnm,zxcvneqoqweputri </span>
-      <img width="200" src="../assets/2024-12-20-15-28-17.png" alt="" />
-      <span> Hgjzx,zxcvneqoqweputri </span>
-    </div>
-    <div>
-      <span>
-        <span
-          style="
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-          "
-          >HHFKDSa</span
-        >
-        <span style="font-size: 43px">Hsdfjskflasjf</span>
-        <span style="font-size: 23px">Hsdfjskflasjf</span>
-      </span>
-    </div> -->
   </body>
 </html>

@@ -71,7 +71,7 @@ BFC也叫区块格式化上下文是网页中一个独立的布局区域，就�
 这是几种常用的方式：
 
 1. 最推荐的方式`display:flow-root;`，这个是专门用来创建bfc的。
-2. 常见的方式(flex/grid)他们的弹性/网格格式化上下文除了布局之外,它和bfc相似，可以理解成自带bfc。
+2. 常见的方式(Flex/grid)他们的弹性/网格格式化上下文除了布局之外,它和bfc相似，可以理解成自带bfc。
 3. 传统方式`overflow`为`hidden` `auto` `scroll`
 4. `position`为`absolute`或`fixed`。
 
@@ -357,11 +357,11 @@ li {
 
 ```
 
-3. 使用flexbox(推荐)
+3. 使用Flexbox(推荐)
 
 ```css
 ul {
-  display: flex;
+  display: Flex;
 }
 ```
 
@@ -529,5 +529,126 @@ h1 + p {
 /* 选择 h1 后面的所有 p 元素 */
 h1 ~ p {
   color: blue;
+}
+```
+
+## 匹配前 N 个子元素及最后 N 个子元素
+
+使用`nth-child` 和 `nth-last-child` 。
+
+```css
+li:nth-child(-n + 3) {
+  color: red;
+}
+li:nth-last-child(-n + 3) {
+  color: blue;
+}
+```
+
+`nth-child(n)` 中，n是一个从0开始的递增计数器，n从0开始，依次取值0,1,2,3,4...
+
+**常见公式：**
+
+```css
+/* 选择前 3 个 */
+li:nth-child(-n+3)
+
+/* 选择奇数项 */
+li:nth-child(2n+1)
+li:nth-child(odd)
+
+/* 选择偶数项 */
+li:nth-child(2n)
+li:nth-child(even)
+
+/* 选择第 3 个之后的 */
+li:nth-child(n+3)
+```
+
+## 如何解决Flex布局7个元素使用 space-between 最后一行两边分布的去问题？
+
+1. 最后一行增加占位元素。
+
+## Grid
+
+Grid是一个二维布局系统，比Flex布局更强大。
+
+Flex 适合内容单行或单列流动方向单一的布局或简单的对齐需求。
+
+Grid适合做复杂的页面布局适合做后体管理系统的栅格化布局。
+
+可以和Flex布局搭配使用，Grid做整体布局，Flex做局部布局。
+
+# 移动端适配
+
+## 移动端适配方案
+
+**1. rem 方案**
+
+使用flexible，flexible 的原理是把html的fontSize设置为页面宽度/10，这时1rem就是1/10屏幕宽度。
+
+以iPhone6为例：布局视口为375px，则1rem = 37.5px，这时设计稿上给定一个元素的宽为75px（设备独立像素），我们只需要将它设置为75 / 37.5 = 2rem即可。
+
+可以搭配 PostCSS-px2rem 插件完成转换。
+
+```css
+.name-item {
+  font-size: 75px;
+  line-height: 150px;
+}
+```
+
+转换为：
+
+```css
+.name-item {
+  font-size: 2rem;
+  line-height: 4rem;
+}
+```
+
+**缺陷**
+
+- flexible 一律按`dpr=1`处理，在不同高倍屏上显示的效果不同。
+- 需要js
+
+**2. vw方案**
+使用vw作为单位，统一使用的`iPhone6`的视觉设计稿（即宽度为`750px`），那么`100vw=750px`，即`1vw = 7.5px`。如果设计稿上某一元素的宽度为`value`像素，其对应的vw值则可以通过`vw = value / 7.5`来计算得到。
+
+可以搭配postcss-px-to-viewport来完成转换。
+
+```css
+.name-item {
+  font-size: 75px;
+  line-height: 150px;
+}
+```
+
+```css
+.name-item {
+  font-size: 10vw;
+  line-height: 20vw;
+}
+```
+
+**3. vw + rem 方案**
+html使用vw作为fontSize,其他元素都使用rem作为单位。纯css实现控制，也能通过通过媒体查询限制最大字号。
+
+```css
+html {
+  /* 设置 1rem = 100px */
+  font-size: 13.33333vw; /* (100 * 100 / 750)vw */
+}
+
+.name-item {
+  font-size: 1rem; /*(75px)*/
+  line-height: 2rem; /*(150px)*/
+}
+
+/* 控制 font-size 最大值 */
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 100px;
+  }
 }
 ```
